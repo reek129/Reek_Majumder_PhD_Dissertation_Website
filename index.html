@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dissertation Title by Reek Majumder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 20px;
+        }
+        .left {
+            flex: 1;
+            max-width: 40%;
+            padding: 20px;
+            text-align: center; /* Center align the content */
+        }
+        .right {
+            flex: 2;
+            max-width: 60%;
+            padding: 20px;
+        }
+        .image-block {
+            margin: 0 auto 10px; /* Center the image block */
+            display: inline-block;
+            width: 200px; /* Adjusted width */
+            height: 200px; /* Adjusted height */
+            overflow: hidden;
+            border-radius: 50%; /* Rounded edges */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+            border: 3px solid #007BFF; /* Blue border */
+        }
+        .image-block img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fits nicely */
+        }
+        .buttons {
+            display: flex;
+            gap: 20px;
+        }
+        .button {
+            flex: 1;
+            font-size: 14px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            height: 80px;
+        }
+        .button:nth-child(1) {
+            background-color: #28a745;
+        }
+        .button:nth-child(2) {
+            background-color: #ff5722;
+        }
+        .button:nth-child(3) {
+            background-color: #673ab7;
+        }
+        .button:hover {
+            opacity: 0.8;
+        }
+        .abstract {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            min-height: 200px;
+        }
+        .github {
+            margin-top: 30px;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 1px solid #ccc;
+        }
+    </style>
+    <script src="paper_data.js"></script> <!-- Load the external data -->
+</head>
+<body>
+    <header>
+        <h1>INTEGRATING ARTIFICIAL INTELLIGENCE FOR TRANSPORTATION CYBER-PHYSICAL SYSTEMS: FROM DETECTION TO CYBER RESILIENCE</h1>
+        <h2>Reek Majumder</h2>
+    </header>
+    <main class="container">
+        <div class="left">
+            <div class="image-block">
+                <img src="images/reek_img.jpg" alt="Reek Majumder Image">
+            </div>
+            <h3>Reek Majumder</h3>
+            <p>PhD Candidate in Artificial Intelligence & Transportation Systems</p>
+            <p>Email: <a href="mailto:rmajumd@clemson.edu">rmajumd@clemson.edu</a></p>
+        </div>
+        <div class="right">
+            <div class="buttons">
+                <button class="button" onclick="showAbstract('paper1')">Development and Evaluation of Ensemble Learning-based Environmental Methane Detection</button>
+                <button class="button" onclick="showAbstract('paper2')">Graph-Powered Defense: CAN Intrusion Detection for UAVs</button>
+                <button class="button" onclick="showAbstract('paper3')">Adversarial Attack-Resilient Perception Module</button>
+            </div>
+            <div class="abstract" id="abstract">
+                <h1>Abstract</h1>
+                <p>Loading default abstract for Paper 1...</p>
+            </div>
+            <div class="github">
+                <p>View all resources on <a id="github-link" href="https://github.com/paper1-repo" target="_blank">GitHub</a></p>
+                <iframe id="pdf-viewer" src="pdf/Phd_paper1.pdf"></iframe>
+                <p><a id="pdf-download" href="pdf/Phd_paper1.pdf" download>Download Paper 1</a></p>
+            </div>
+        </div>
+    </main>
+    <script>
+        // Default abstract and PDF on load
+        window.onload = function () {
+            showAbstract('paper1');
+        };
+
+        function showAbstract(paper) {
+            // Fetch data from external file
+            const { abstract, pdfLink, githubLink } = paperData[paper];
+
+            // Update abstract content
+            document.getElementById('abstract').innerHTML = `<h1>Abstract</h1><p>${abstract}</p>`;
+
+            // Update PDF viewer and download link
+            document.getElementById('pdf-viewer').src = pdfLink;
+            document.getElementById('pdf-download').href = pdfLink;
+            document.getElementById('pdf-download').innerText = `Download ${paper.replace('paper', 'Paper ')}`;
+
+            // Update GitHub link
+            document.getElementById('github-link').href = githubLink;
+            document.getElementById('github-link').innerText = `GitHub for ${paper.replace('paper', 'Paper ')}`;
+        }
+    </script>
+</body>
+</html>
